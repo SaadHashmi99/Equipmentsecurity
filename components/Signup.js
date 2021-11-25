@@ -94,7 +94,7 @@ function Signup() {
         <View style={styles.forgotPasswordcontainer}>
           <TouchableOpacity style={styles.forgotPasswordlink}>
             <Text style={styles.forgotPasswordtext}>
-              Already have an account ?
+              Already have an Account ?
             </Text>
           </TouchableOpacity>
         </View>
