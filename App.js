@@ -18,11 +18,10 @@ function App() {
       {/* <EquipmentinfoOne /> */}
       {/* <EquipmentinfoTwo /> */}
       {/* <Records /> */}
-      <Login />
-      {/* <Signup /> */}
+      {/* <Login /> */}
+      <Signup />
     </>
   );
 }
-
 
 export default App;

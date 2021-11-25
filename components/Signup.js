@@ -14,47 +14,17 @@ function Signup() {
     <ScrollView>
       <View style={styles.myContainer}>
         <View style={styles.logoContainer}>
-          <Image
-            style={styles.logo}
-            source={require('../images/545.png')}
-          />
+          <Image style={styles.logo} source={require('../images/545.png')} />
         </View>
 
         <View style={styles.loginHeadingContainer}>
           <Text style={styles.loginHeading}> Create An Account </Text>
         </View>
 
-        <View
-          style={{
-            width: '100%',
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: 20,
-          }}>
-          <TextInput
-            style={{
-              borderWidth: 1,
-              width: '44.5%',
-              borderRadius: 5,
-              fontSize: 20,
-              paddingLeft: 15,
-              marginRight: 5,
-            }}
-            placeholder="First Name"
-          />
+        <View style={styles.nameContainer}>
+          <TextInput style={styles.fName} placeholder="First Name" />
 
-          <TextInput
-            style={{
-              borderWidth: 1,
-              width: '44.5%',
-              borderRadius: 5,
-              fontSize: 20,
-              paddingLeft: 15,
-            }}
-            placeholder="Last Name"
-          />
+          <TextInput style={styles.lName} placeholder="Last Name" />
         </View>
 
         <View style={styles.emailInputcontainer}>
@@ -111,6 +81,7 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 20,
   },
   logo: {
     width: '60%',
@@ -132,6 +103,35 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 5,
   },
+
+  nameContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+  },
+
+  fName: {
+    borderWidth: 1,
+    width: '44.5%',
+    height: 45,
+    borderRadius: 5,
+    fontSize: 16,
+    paddingLeft: 15,
+    marginRight: 5,
+  },
+
+  lName: {
+    borderWidth: 1,
+    width: '44.5%',
+    height: 45,
+    borderRadius: 5,
+    fontSize: 16,
+    paddingLeft: 15,
+  },
+
   emailInputcontainer: {
     marginTop: 10,
     width: '100%',
@@ -146,10 +146,11 @@ const styles = StyleSheet.create({
   },
   emailInput: {
     width: '90%',
+    height: 45,
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 5,
-    fontSize: 20,
+    fontSize: 16,
     padding: 10,
     paddingLeft: 15,
   },
@@ -161,10 +162,11 @@ const styles = StyleSheet.create({
   },
   passwordInput: {
     width: '90%',
+    height: 45,
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 5,
-    fontSize: 20,
+    fontSize: 16,
     padding: 10,
     paddingLeft: 15,
   },
