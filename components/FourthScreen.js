@@ -20,7 +20,7 @@ function FourthScreen() {
             <Text style={styles.pictureButtontext}> Add Picture </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.pictureButtoncontainer}>
-            <Text style={styles.pictureButtontext}> Camera </Text>
+            <Text style={styles.pictureButtontext}> Open Camera </Text>
           </TouchableOpacity>
         </View>
         <View style={{marginTop: 100, marginBottom: 240}}>
@@ -67,56 +67,73 @@ const styles = StyleSheet.create({
   
   marginTopcontainer: {
     marginTop: 50,
+    marginBottom: 30,
   },
 
   pictureButtoncontainer: {
     backgroundColor: '#0275db',
-    width: 140,
+    width: "45%",
     alignSelf: 'center',
-    borderRadius: 30,
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 4,
   },
 
   pictureButtontext: {
     textAlign: 'center',
     paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingVertical: 13,
     color: '#fff',
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
   
   input: {
-    height: 40,
-    width: 100,
+    height: 42,
+    width: 130,
     borderRadius: 3,
     margin: 15,
     borderWidth: 1,
     padding: 10,
-    fontSize: 13,
+    fontSize: 14,
     alignSelf: 'center',
-  },
-  
-  backBtnText: {
-    textAlign: 'center',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
   },
   
   backBtncontainer: {
     backgroundColor: '#5cb85c',
-    width: 140,
+    width: "45%",
     alignSelf: 'center',
-    borderRadius: 30,
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 4,
   },
   
   saveBtncontainer: {
     backgroundColor: '#d9534f',
-    width: 140,
+    width: "45%",
     alignSelf: 'center',
-    borderRadius: 30,
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 4,
   },
 });
 

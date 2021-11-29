@@ -1,4 +1,5 @@
 import React from 'react';
+import Account from './components/Account';
 import AdminPanel from './components/AdminPanel';
 import CertificateScreen from './components/CertificateScreen';
 import EquipmentinfoOne from './components/EquipmentinfoOne';
@@ -8,18 +9,21 @@ import Login from './components/Login';
 import Records from './components/Records';
 import Signup from './components/Signup';
 import ThirdScreen from './components/ThirdScreen';
+import Navigation from './navigation/Navigation';
 function App() {
   return (
     <>
       {/* <AdminPanel /> */}
-      {/* <CertificateScreen /> */}
+      <CertificateScreen />
       {/* <ThirdScreen /> */}
       {/* <FourthScreen /> */}
       {/* <EquipmentinfoOne /> */}
       {/* <EquipmentinfoTwo /> */}
       {/* <Records /> */}
       {/* <Login /> */}
-      <Signup />
+      {/* <Signup /> */}
+      {/* <Navigation /> */}
+      {/* <Account /> */}
     </>
   );
 }

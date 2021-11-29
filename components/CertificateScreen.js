@@ -15,11 +15,16 @@ const radioButtonsData = [
     id: '1', // acts as primary key, should be unique and non-empty string
     label: 'Good',
     value: 'option1',
+    borderColor: 'green',
+    color: 'green',
   },
   {
     id: '2',
     label: 'Bad',
     value: 'option2',
+    selected: true,
+    borderColor: 'red',
+    color: 'red',
   },
   {
     id: '3',
@@ -30,6 +35,10 @@ const radioButtonsData = [
 
 function CertificateScreen() {
   const [radioButtons, setRadioButtons] = useState(radioButtonsData);
+  function onPressRadioButton(radioButtonsArray) {
+    setRadioButtons(radioButtonsArray);
+  }
+
   return (
     <ScrollView>
       <View style={styles.mainContainer}>
@@ -46,116 +55,152 @@ function CertificateScreen() {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.inputMaincontainer}>
-          <View style={styles.inputLabelcontainer}>
-            <Text style={styles.inputLabeltext}>Description:</Text>
+        <View
+          style={{
+            alignSelf: 'center',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '95%',
+            backgroundColor: '#fff',
+            borderRadius: 5,
+            shadowColor: '#000',
+            shadowOffset: {
+              width: 0,
+              height: 1,
+            },
+            shadowOpacity: 0.2,
+            shadowRadius: 1.41,
+            elevation: 3,
+            paddingBottom: 20,
+          }}>
+          <View style={styles.inputMaincontainer}>
+            <View style={styles.inputLabelcontainer}>
+              <Text style={styles.inputLabeltext}>Description:</Text>
+            </View>
+
+            <View style={styles.inputContainer}>
+              <TextInput
+                keyboardType="default"
+                style={styles.inputStyles}
+                placeholder="Description"
+              />
+            </View>
           </View>
 
-          <View style={styles.inputContainer}>
-            <TextInput
-              keyboardType="default"
-              style={styles.inputStyles}
-              placeholder="Description"
-            />
+          <View style={styles.inputMaincontainer}>
+            <View style={styles.inputLabelcontainer}>
+              <Text style={styles.inputLabeltext}> Location Description: </Text>
+            </View>
+
+            <View style={styles.inputContainer}>
+              <TextInput
+                keyboardType="default"
+                style={styles.inputStyles}
+                placeholder="Location Description"
+              />
+            </View>
+          </View>
+
+          <View style={styles.inputMaincontainer}>
+            <View style={styles.inputLabelcontainer}>
+              <Text style={styles.inputLabeltext}> Equipment: </Text>
+            </View>
+
+            <View style={styles.inputContainer}>
+              <TextInput
+                keyboardType="default"
+                style={styles.inputStyles}
+                placeholder="Equipment"
+              />
+            </View>
+          </View>
+
+          <View style={styles.inputMaincontainer}>
+            <View style={styles.inputLabelcontainer}>
+              <Text style={styles.inputLabeltext}> Equipment Type: </Text>
+            </View>
+
+            <View style={styles.inputContainer}>
+              <TextInput
+                keyboardType="default"
+                style={styles.inputStyles}
+                placeholder="Equipment Type"
+              />
+            </View>
+          </View>
+
+          <View style={styles.inputMaincontainer}>
+            <View style={styles.inputLabelcontainer}>
+              <Text style={styles.inputLabeltext}> Equipment Family: </Text>
+            </View>
+
+            <View style={styles.inputContainer}>
+              <TextInput
+                keyboardType="default"
+                style={styles.inputStyles}
+                placeholder="Equipment Family"
+              />
+            </View>
+          </View>
+
+          <View style={styles.inputMaincontainer}>
+            <View style={styles.inputLabelcontainer}>
+              <Text style={styles.inputLabeltext}>Last Inspection Date:</Text>
+            </View>
+
+            <View style={styles.inputContainer}>
+              <TextInput
+                keyboardType="default"
+                style={styles.inputStyles}
+                placeholder="Last Inspection Date"
+              />
+            </View>
           </View>
         </View>
 
-        <View style={styles.inputMaincontainer}>
-          <View style={styles.inputLabelcontainer}>
-            <Text style={styles.inputLabeltext}> Location Description: </Text>
-          </View>
+        <View style={styles.checklistMaincontainer}>
+          <View style={styles.checklistContainer}>
+            <View style={styles.headingContainer}>
+              <Text style={styles.headingText}> Checklist </Text>
+              {/* <Text style={{}}> Checklist </Text> */}
+            </View>
 
-          <View style={styles.inputContainer}>
-            <TextInput
-              keyboardType="default"
-              style={styles.inputStyles}
-              placeholder="Location Description"
-            />
-          </View>
-        </View>
-        <View style={styles.inputMaincontainer}>
-          <View style={styles.inputLabelcontainer}>
-            <Text style={styles.inputLabeltext}> Equipment: </Text>
-          </View>
+            <View style={styles.radioButtoncontainer}>
+              <Text style={styles.tagText}>Tag 1</Text>
 
-          <View style={styles.inputContainer}>
-            <TextInput
-              keyboardType="default"
-              style={styles.inputStyles}
-              placeholder="Equipment"
-            />
-          </View>
-        </View>
-        <View style={styles.inputMaincontainer}>
-          <View style={styles.inputLabelcontainer}>
-            <Text style={styles.inputLabeltext}> Equipment Type: </Text>
-          </View>
+              <RadioGroup radioButtons={radioButtons} layout="row" />
+            </View>
 
-          <View style={styles.inputContainer}>
-            <TextInput
-              keyboardType="default"
-              style={styles.inputStyles}
-              placeholder="Equipment Type"
-            />
+            <View style={styles.radioButtoncontainer}>
+              <Text style={styles.tagText}>Tag 1</Text>
+
+              <RadioGroup radioButtons={radioButtons} layout="row" />
+            </View>
+
+            <View style={styles.radioButtoncontainer}>
+              <Text style={styles.tagText}>Tag 1</Text>
+
+              <RadioGroup radioButtons={radioButtons} layout="row" />
+            </View>
+
+            <View style={styles.radioButtoncontainer}>
+              <Text style={styles.tagText}>Tag 1</Text>
+
+              <RadioGroup radioButtons={radioButtons} layout="row" />
+            </View>
           </View>
         </View>
 
-        <View style={styles.inputMaincontainer}>
-          <View style={styles.inputLabelcontainer}>
-            <Text style={styles.inputLabeltext}> Equipment Family: </Text>
-          </View>
-
-          <View style={styles.inputContainer}>
-            <TextInput
-              keyboardType="default"
-              style={styles.inputStyles}
-              placeholder="Equipment Family"
-            />
-          </View>
+        <View style={styles.loginButtoncontainer}>
+          <TouchableOpacity style={styles.attachImageButton}>
+            <Text style={styles.loginButtontext}> Attach Image </Text>
+          </TouchableOpacity>
         </View>
 
-        <View style={styles.inputMaincontainer}>
-          <View style={styles.inputLabelcontainer}>
-            <Text style={styles.inputLabeltext}>Last Inspection Date:</Text>
-          </View>
-
-          <View style={styles.inputContainer}>
-            <TextInput
-              keyboardType="default"
-              style={styles.inputStyles}
-              placeholder="Last Inspection Date"
-            />
-          </View>
-        </View>
-
-        <View style={styles.checklistContainer}>
-          <View style={styles.headingContainer}>
-            <Text style={styles.headingText}> Checklist </Text>
-          </View>
-
-          <View style={styles.radioButtoncontainer}>
-            <Text style={styles.tagText}>Tag 1</Text>
-
-            <RadioGroup radioButtons={radioButtons} layout="row" />
-          </View>
-
-          <View style={styles.radioButtoncontainer}>
-            <Text style={styles.tagText}>Tag 1</Text>
-
-            <RadioGroup radioButtons={radioButtons} layout="row" />
-          </View>
-
-          <View style={styles.radioButtoncontainer}>
-            <Text style={styles.tagText}>Tag 1</Text>
-
-            <RadioGroup radioButtons={radioButtons} layout="row" />
-          </View>
-
-          <View style={styles.radioButtoncontainer}>
-            <Text style={styles.tagText}>Tag 1</Text>
-
-            <RadioGroup radioButtons={radioButtons} layout="row" />
-          </View>
+        <View style={styles.loginButtoncontainer}>
+          <TouchableOpacity style={styles.loginButton}>
+            <Text style={styles.loginButtontext}> Save </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
@@ -164,7 +209,7 @@ function CertificateScreen() {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    backgroundColor: '#fafafa',
+    backgroundColor: '#fff',
     flex: 1,
   },
 
@@ -181,16 +226,26 @@ const styles = StyleSheet.create({
   },
 
   certificateButtoncontainer: {
+    width: '40%',
     backgroundColor: 'green',
     alignSelf: 'center',
-    borderRadius: 25,
+    borderRadius: 6,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 2,
   },
 
   certificateButtontext: {
+    textAlign: 'center',
     paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingVertical: 15,
     color: '#fff',
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: 'bold',
   },
 
@@ -200,13 +255,15 @@ const styles = StyleSheet.create({
   },
 
   inputLabelcontainer: {
-    marginLeft: 14,
+    marginLeft: 15,
     marginBottom: 7,
   },
 
   inputLabeltext: {
+    color: '#000',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontFamily: "Estonia-Regular",
+    fontSize: 15,
   },
 
   inputContainer: {
@@ -225,8 +282,28 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
 
+  checklistMaincontainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    marginTop: 12,
+    marginBottom: 20,
+    width: '96%',
+    marginLeft: 8,
+    borderRadius: 6,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 3,
+  },
+
   checklistContainer: {
-    width: '100%',
+    width: '95%',
     marginBottom: 30,
   },
 
@@ -241,6 +318,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: 'black',
     fontWeight: 'bold',
+    fontFamily:'Estonia-Regular'
   },
 
   radioButtoncontainer: {
@@ -254,6 +332,54 @@ const styles = StyleSheet.create({
     color: 'black',
     fontWeight: 'bold',
     alignSelf: 'center',
+  },
+  loginButton: {
+    width: '90%',
+    borderRadius: 5,
+    alignItems: 'center',
+    backgroundColor: '#5cb85c',
+    marginTop: 15,
+    padding: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 1.41,
+
+    elevation: 2,
+  },
+
+  attachImageButton: {
+    width: '90%',
+    borderRadius: 5,
+    alignItems: 'center',
+    backgroundColor: '#d9534f',
+    marginTop: 15,
+    padding: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 1.41,
+
+    elevation: 2,
+  },
+
+  loginButtontext: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 15,
+    textTransform: 'uppercase',
+  },
+
+  loginButtoncontainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 30,
   },
 });
 

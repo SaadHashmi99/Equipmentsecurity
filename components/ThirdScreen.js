@@ -33,45 +33,46 @@ function ThirdScreen() {
   return (
     <ScrollView>
       <View style={styles.mainContainer}>
-        
-      <View style={styles.checklistContainer}>
-          <View style={styles.headingContainer}>
-            <Text style={styles.headingText}> Checklist </Text>
-          </View>
+        <View style={styles.checklistMaincontainer}>
+          <View style={styles.checklistContainer}>
+            <View style={styles.headingContainer}>
+              <Text style={styles.headingText}> Checklist </Text>
+            </View>
 
-          <View style={styles.radioButtoncontainer}>
-            <Text style={styles.tagText}>Tag 1</Text>
+            <View style={styles.radioButtoncontainer}>
+              <Text style={styles.tagText}>Tag 1</Text>
 
-            <RadioGroup radioButtons={radioButtons} layout="row" />
-          </View>
+              <RadioGroup radioButtons={radioButtons} layout="row" />
+            </View>
 
-          <View style={styles.radioButtoncontainer}>
-            <Text style={styles.tagText}>Tag 1</Text>
+            <View style={styles.radioButtoncontainer}>
+              <Text style={styles.tagText}>Tag 1</Text>
 
-            <RadioGroup radioButtons={radioButtons} layout="row" />
-          </View>
+              <RadioGroup radioButtons={radioButtons} layout="row" />
+            </View>
 
-          <View style={styles.radioButtoncontainer}>
-            <Text style={styles.tagText}>Tag 1</Text>
+            <View style={styles.radioButtoncontainer}>
+              <Text style={styles.tagText}>Tag 1</Text>
 
-            <RadioGroup radioButtons={radioButtons} layout="row" />
-          </View>
+              <RadioGroup radioButtons={radioButtons} layout="row" />
+            </View>
 
-          <View style={styles.radioButtoncontainer}>
-            <Text style={styles.tagText}>Tag 1</Text>
+            <View style={styles.radioButtoncontainer}>
+              <Text style={styles.tagText}>Tag 1</Text>
 
-            <RadioGroup radioButtons={radioButtons} layout="row" />
+              <RadioGroup radioButtons={radioButtons} layout="row" />
+            </View>
           </View>
         </View>
 
-        <View>
-          <TouchableOpacity style={styles.certificateButtoncontainer}>
+        <View style={styles.certificateButtonContainer}>
+          <TouchableOpacity style={styles.certificateButton}>
             <Text style={styles.certificateButtontext}>Open Camera</Text>
           </TouchableOpacity>
         </View>
 
-        <View>
-          <TouchableOpacity style={styles.saveButtoncontainer}>
+        <View style={styles.saveButtoncontainer}>
+          <TouchableOpacity style={styles.saveButton}>
             <Text style={styles.saveButtontext}>Save</Text>
           </TouchableOpacity>
         </View>
@@ -85,41 +86,92 @@ const styles = StyleSheet.create({
     backgroundColor: '#fafafa',
     flex: 1,
   },
-  
-  certificateButtoncontainer: {
+
+  certificateButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  certificateButton: {
+    width: '50%',
     backgroundColor: '#0275DB',
-    alignSelf: 'center',
-    borderRadius: 35,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
     marginTop: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 4,
   },
-  
+
   certificateButtontext: {
-    paddingHorizontal: 25,
-    paddingVertical: 15,
+    textAlign: 'center',
+    paddingVertical: 18,
     color: '#fff',
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
-  
+
   saveButtoncontainer: {
-    marginTop: 70,
-    width: '60%',
-    backgroundColor: '#5cb85c',
-    alignSelf: 'center',
-    borderRadius: 35,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 40,
   },
-  
+
+  saveButton: {
+    width: '90%',
+    marginTop: 70,
+    backgroundColor: '#5cb85c',
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 4,
+  },
+
   saveButtontext: {
     textAlign: 'center',
     color: '#fff',
-    paddingVertical: 15,
-    fontSize: 24,
+    paddingVertical: 20,
+    fontSize: 16,
     fontWeight: 'bold',
+    textTransform: 'uppercase',
+  },
+
+  checklistMaincontainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    marginTop: 25,
+    width: '96%',
+    marginLeft: 8,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 3,
   },
 
   checklistContainer: {
-    marginTop: 60,
-    width: '100%',
+    marginTop: 20,
+    width: '90%',
     marginBottom: 50,
   },
 

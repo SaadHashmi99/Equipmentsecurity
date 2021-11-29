@@ -9,14 +9,12 @@ import {
   TextInput,
 } from 'react-native';
 
-function Login() {
+function Login({navigation}) {
   return (
     <ScrollView>
       <View style={styles.myContainer}>
         <View style={styles.logoContainer}>
-          <Image style={styles.logo} source={require('../images/545.png')} />
-
-          {/* <Text style={styles.companyName}> Equipment Security </Text> */}
+          <Image style={styles.logo} source={require('../src/assets/images/545.png')} />
         </View>
 
         <View style={styles.loginHeadingContainer}>
@@ -40,19 +38,13 @@ function Login() {
         </View>
 
         <View style={styles.loginButtoncontainer}>
-          <TouchableOpacity style={styles.loginButton}>
+          <TouchableOpacity style={styles.loginButton} onPress={ () => navigation.navigate("AdminPanel")}>
             <Text style={styles.loginButtontext}> Login </Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.orTextcontainer}>
-          <Text style={styles.orText}> Don't Have An Account ? </Text>
-        </View>
-
-        <View style={styles.signupButtoncontainer}>
-          <TouchableOpacity style={styles.signupButton}>
-            <Text style={styles.signupButtontext}> Sign Up </Text>
-          </TouchableOpacity>
+          <Text style={styles.orText}> English | Arabic </Text>
         </View>
       </View>
     </ScrollView>

@@ -14,7 +14,7 @@ function Signup() {
     <ScrollView>
       <View style={styles.myContainer}>
         <View style={styles.logoContainer}>
-          <Image style={styles.logo} source={require('../images/545.png')} />
+          <Image style={styles.logo} source={require('../src/assets/images/545.png')} />
         </View>
 
         <View style={styles.loginHeadingContainer}>
@@ -61,13 +61,13 @@ function Signup() {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.forgotPasswordcontainer}>
+        {/* <View style={styles.forgotPasswordcontainer}>
           <TouchableOpacity style={styles.forgotPasswordlink}>
             <Text style={styles.forgotPasswordtext}>
               Already have an Account ?
             </Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     </ScrollView>
   );

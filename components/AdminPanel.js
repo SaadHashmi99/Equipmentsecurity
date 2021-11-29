@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 
-function AdminPanel() {
+function AdminPanel({navigation}) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
@@ -40,7 +40,7 @@ function AdminPanel() {
           <View style={styles.buttoncontainer}>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => navigation.navigate('')}>
+              onPress={() => navigation.navigate('CertificateScreen')}>
               <Text style={styles.buttonText}> New Inspection </Text>
             </TouchableOpacity>
           </View>
@@ -48,7 +48,7 @@ function AdminPanel() {
           <View style={styles.buttoncontainer}>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => navigation.navigate('')}>
+              onPress={() => navigation.navigate('EquipmentinfoOne')}>
               <Text style={styles.buttonText}> Equipment Info </Text>
             </TouchableOpacity>
           </View>
@@ -56,7 +56,7 @@ function AdminPanel() {
           <View style={styles.buttoncontainer}>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => navigation.navigate('')}>
+              onPress={() => navigation.navigate('Records')}>
               <Text style={styles.buttonText}> My Records </Text>
             </TouchableOpacity>
           </View>
@@ -64,7 +64,7 @@ function AdminPanel() {
           <View style={styles.buttoncontainer}>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => navigation.navigate('')}>
+              onPress={() => navigation.navigate('Account')}>
               <Text style={styles.buttonText}> My Account </Text>
             </TouchableOpacity>
           </View>
@@ -87,13 +87,13 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 40,
+    marginTop: 20,
     marginBottom: 60,
   },
 
   button: {
-    width: '70%',
-    borderRadius: 6,
+    width: '60%',
+    borderRadius: 5,
     alignItems: 'center',
     backgroundColor: 'black',
     marginTop: 10,
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 14,
     textTransform: 'uppercase',
   },
 
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 90,
+    marginBottom: 80,
 
   },
 
