@@ -18,18 +18,16 @@ function Account({navigation}) {
         </View>
 
         <View style={styles.userImagecontainer}>
-
           <Image
             style={{width: 130, height: 120}}
             source={require('../src/assets/images/userimage.png')}
           />
-          
         </View>
 
         <View>
           <View style={styles.inputMaincontainer}>
             <View style={styles.inputLabelcontainer}>
-              <Text style={styles.inputLabeltext}>Name:</Text>
+              <Text style={styles.inputLabeltext}> Name: </Text>
             </View>
 
             <View style={styles.inputContainer}>
@@ -100,7 +98,7 @@ function Account({navigation}) {
 
           <View style={styles.inputMaincontainer}>
             <View style={styles.inputLabelcontainer}>
-              <Text style={styles.inputLabeltext}>Email:</Text>
+              <Text style={styles.inputLabeltext}> Email: </Text>
             </View>
 
             <View style={styles.inputContainer}>
@@ -114,11 +112,12 @@ function Account({navigation}) {
         </View>
 
         <View style={styles.loginButtoncontainer}>
-          <TouchableOpacity style={styles.loginButton} onPress={ () => navigation.navigate("AdminPanel")}>
+          <TouchableOpacity
+            style={styles.loginButton}
+            onPress={() => navigation.navigate('AdminPanel')}>
             <Text style={styles.loginButtontext}> Save </Text>
           </TouchableOpacity>
         </View>
-
       </View>
     </ScrollView>
   );

@@ -8,6 +8,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
+  Dimensions,
 } from 'react-native';
 
 const radioButtonsData = [
@@ -33,6 +34,8 @@ const radioButtonsData = [
   },
 ];
 
+const image = require('../src/assets/images/background.png');
+
 function CertificateScreen() {
   const [radioButtons, setRadioButtons] = useState(radioButtonsData);
   function onPressRadioButton(radioButtonsArray) {
@@ -40,8 +43,18 @@ function CertificateScreen() {
   }
 
   return (
-    <ScrollView>
-      <View style={styles.mainContainer}>
+    <>
+      <Image
+        source={image}
+        style={{
+          position: 'absolute',
+          zIndex: -1,
+          opacity: 0.1,
+          width: Dimensions.get('screen').width,
+          height: Dimensions.get('screen').height,
+        }}
+      />
+      <ScrollView>
         <View style={styles.productSection}>
           <Image
             source={{
@@ -51,7 +64,7 @@ function CertificateScreen() {
           />
 
           <TouchableOpacity style={styles.certificateButtoncontainer}>
-            <Text style={styles.certificateButtontext}>Add Certificate</Text>
+            <Text style={styles.certificateButtontext}> Add Certificate </Text>
           </TouchableOpacity>
         </View>
 
@@ -60,44 +73,33 @@ function CertificateScreen() {
             alignSelf: 'center',
             justifyContent: 'center',
             alignItems: 'center',
-            width: '95%',
-            backgroundColor: '#fff',
+            width: '96%',
+            marginTop: 20,
+            paddingVertical: 5,
+            borderWidth: 1,
+            borderColor: '#CCCC',
             borderRadius: 5,
-            shadowColor: '#000',
-            shadowOffset: {
-              width: 0,
-              height: 1,
-            },
-            shadowOpacity: 0.2,
-            shadowRadius: 1.41,
-            elevation: 3,
-            paddingBottom: 20,
           }}>
           <View style={styles.inputMaincontainer}>
+            
             <View style={styles.inputLabelcontainer}>
-              <Text style={styles.inputLabeltext}>Description:</Text>
+              <Text style={styles.inputLabeltext}> Description: </Text>
             </View>
 
-            <View style={styles.inputContainer}>
-              <TextInput
-                keyboardType="default"
-                style={styles.inputStyles}
-                placeholder="Description"
-              />
+            <View>
+              <Text style={{fontSize: 17, alignSelf: 'center', paddingHorizontal: 80 }}> Fire Estinguisher </Text>
             </View>
+
           </View>
 
           <View style={styles.inputMaincontainer}>
+
             <View style={styles.inputLabelcontainer}>
               <Text style={styles.inputLabeltext}> Location Description: </Text>
             </View>
 
-            <View style={styles.inputContainer}>
-              <TextInput
-                keyboardType="default"
-                style={styles.inputStyles}
-                placeholder="Location Description"
-              />
+            <View>
+              <Text style={{fontSize: 17, alignSelf: 'center', paddingHorizontal: 12 }}> IT Room </Text>
             </View>
           </View>
 
@@ -106,12 +108,8 @@ function CertificateScreen() {
               <Text style={styles.inputLabeltext}> Equipment: </Text>
             </View>
 
-            <View style={styles.inputContainer}>
-              <TextInput
-                keyboardType="default"
-                style={styles.inputStyles}
-                placeholder="Equipment"
-              />
+            <View>
+              <Text style={{fontSize: 17, alignSelf: 'center', paddingHorizontal: 85 }}> Fire Equipment </Text>
             </View>
           </View>
 
@@ -120,12 +118,8 @@ function CertificateScreen() {
               <Text style={styles.inputLabeltext}> Equipment Type: </Text>
             </View>
 
-            <View style={styles.inputContainer}>
-              <TextInput
-                keyboardType="default"
-                style={styles.inputStyles}
-                placeholder="Equipment Type"
-              />
+            <View>
+              <Text style={{fontSize: 17, alignSelf: 'center', paddingHorizontal: 45 }}> Fire Safety </Text>
             </View>
           </View>
 
@@ -134,40 +128,32 @@ function CertificateScreen() {
               <Text style={styles.inputLabeltext}> Equipment Family: </Text>
             </View>
 
-            <View style={styles.inputContainer}>
-              <TextInput
-                keyboardType="default"
-                style={styles.inputStyles}
-                placeholder="Equipment Family"
-              />
+            <View>
+              <Text style={{fontSize: 17, alignSelf: 'center', paddingHorizontal: 30 }}> Fire Equipment </Text>
             </View>
           </View>
 
           <View style={styles.inputMaincontainer}>
             <View style={styles.inputLabelcontainer}>
-              <Text style={styles.inputLabeltext}>Last Inspection Date:</Text>
+              <Text style={styles.inputLabeltext}> Last Inspection Date: </Text>
             </View>
 
-            <View style={styles.inputContainer}>
-              <TextInput
-                keyboardType="default"
-                style={styles.inputStyles}
-                placeholder="Last Inspection Date"
-              />
+            <View>
+              <Text style={{fontSize: 17, alignSelf: 'center', paddingHorizontal: 12 }}> Not Available </Text>
             </View>
+
           </View>
+
         </View>
 
         <View style={styles.checklistMaincontainer}>
           <View style={styles.checklistContainer}>
             <View style={styles.headingContainer}>
               <Text style={styles.headingText}> Checklist </Text>
-              {/* <Text style={{}}> Checklist </Text> */}
             </View>
 
             <View style={styles.radioButtoncontainer}>
               <Text style={styles.tagText}>Tag 1</Text>
-
               <RadioGroup radioButtons={radioButtons} layout="row" />
             </View>
 
@@ -197,22 +183,17 @@ function CertificateScreen() {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.loginButtoncontainer}>
+        <View style={styles.saveButtoncontainer}>
           <TouchableOpacity style={styles.loginButton}>
             <Text style={styles.loginButtontext}> Save </Text>
           </TouchableOpacity>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    backgroundColor: '#fff',
-    flex: 1,
-  },
-
   productSection: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -226,7 +207,7 @@ const styles = StyleSheet.create({
   },
 
   certificateButtoncontainer: {
-    width: '40%',
+    width: '45%',
     backgroundColor: 'green',
     alignSelf: 'center',
     borderRadius: 6,
@@ -251,59 +232,32 @@ const styles = StyleSheet.create({
 
   inputMaincontainer: {
     width: '100%',
-    marginTop: 12,
+    flexDirection: 'row',
+    paddingVertical: 12,
   },
 
   inputLabelcontainer: {
-    marginLeft: 15,
-    marginBottom: 7,
+    marginLeft: 12,
   },
 
   inputLabeltext: {
-    color: '#000',
+    color: '#635A5D',
     fontWeight: 'bold',
-    fontFamily: "Estonia-Regular",
-    fontSize: 15,
-  },
-
-  inputContainer: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  inputStyles: {
-    width: '90%',
-    height: 35,
-    padding: 9,
-    fontSize: 13,
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 4,
+    fontSize: 18,
+    fontFamily: 'Poppins-Bold',
   },
 
   checklistMaincontainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    backgroundColor: '#fff',
     alignItems: 'center',
-    marginTop: 12,
-    marginBottom: 20,
     width: '96%',
     marginLeft: 8,
     borderRadius: 6,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-    elevation: 3,
   },
 
   checklistContainer: {
-    width: '95%',
+    width: '92%',
     marginBottom: 30,
   },
 
@@ -318,7 +272,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: 'black',
     fontWeight: 'bold',
-    fontFamily:'Estonia-Regular'
+    fontFamily: 'Estonia-Regular',
   },
 
   radioButtoncontainer: {
@@ -333,6 +287,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     alignSelf: 'center',
   },
+
   loginButton: {
     width: '90%',
     borderRadius: 5,
@@ -347,7 +302,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.3,
     shadowRadius: 1.41,
-
     elevation: 2,
   },
 
@@ -377,6 +331,11 @@ const styles = StyleSheet.create({
   },
 
   loginButtoncontainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  saveButtoncontainer: {
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 30,

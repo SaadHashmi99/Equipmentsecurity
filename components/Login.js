@@ -7,56 +7,64 @@ import {
   Image,
   ScrollView,
   TextInput,
+  ImageBackground,
+  Dimensions
 } from 'react-native';
+
+const image = require('../src/assets/images/background.png');
 
 function Login({navigation}) {
   return (
-    <ScrollView>
-      <View style={styles.myContainer}>
-        <View style={styles.logoContainer}>
-          <Image style={styles.logo} source={require('../src/assets/images/545.png')} />
-        </View>
+      <View>
+        <Image source={image} style={{ position: 'absolute', zIndex: -1, opacity: 0.1, width: Dimensions.get("screen").width,height: Dimensions.get("screen").height }} />
+          <View style={styles.logoContainer}>
+            <Image
+              style={styles.logo}
+              source={require('../src/assets/images/545.png')}
+            />
+          </View>
 
-        <View style={styles.loginHeadingContainer}>
-          <Text style={styles.loginHeading}> Login </Text>
-        </View>
+          <View style={styles.loginHeadingContainer}>
+            <Text style={styles.loginHeading}> Login </Text>
+          </View>
 
-        <View style={styles.emailInputcontainer}>
-          <TextInput
-            keyboardType="email-address"
-            style={styles.emailInput}
-            placeholder="Email"
-          />
-        </View>
+          <View style={styles.emailInputcontainer}>
+            <TextInput
+              keyboardType="email-address"
+              style={styles.emailInput}
+              placeholder="Email"
+            />
+          </View>
 
-        <View style={styles.passwordInputcontainer}>
-          <TextInput
-            secureTextEntry={true}
-            style={styles.passwordInput}
-            placeholder="Password"
-          />
-        </View>
+          <View style={styles.passwordInputcontainer}>
+            <TextInput
+              secureTextEntry={true}
+              style={styles.passwordInput}
+              placeholder="Password"
+            />
+          </View>
 
-        <View style={styles.loginButtoncontainer}>
-          <TouchableOpacity style={styles.loginButton} onPress={ () => navigation.navigate("AdminPanel")}>
-            <Text style={styles.loginButtontext}> Login </Text>
-          </TouchableOpacity>
-        </View>
+          <View style={styles.loginButtoncontainer}>
+            <TouchableOpacity
+              style={styles.loginButton}
+              onPress={() => navigation.navigate('AdminPanel')}>
+              <Text style={styles.loginButtontext}> Login </Text>
+            </TouchableOpacity>
+          </View>
 
-        <View style={styles.orTextcontainer}>
-          <Text style={styles.orText}> English | Arabic </Text>
-        </View>
+          <View style={styles.orTextcontainer}>
+            <Text style={styles.orText}> English | Arabic </Text>
+          </View>
       </View>
-    </ScrollView>
   );
 }
 
 // React Native Styles
 
 const styles = StyleSheet.create({
-  myContainer: {
-    flex: 1,
-  },
+  // myContainer: {
+  //   flex: 1,
+  // },
 
   logoContainer: {
     width: '100%',
@@ -66,8 +74,8 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-    width: '60%',
-    height: 160,
+    width: '65%',
+    height: 180,
   },
 
   companyName: {
@@ -98,7 +106,8 @@ const styles = StyleSheet.create({
   emailInput: {
     width: '90%',
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: 'black',
+    backgroundColor: '#fff',
     borderRadius: 5,
     fontSize: 20,
     padding: 10,
@@ -115,7 +124,8 @@ const styles = StyleSheet.create({
   passwordInput: {
     width: '90%',
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: 'black',
+    backgroundColor: '#fff',
     borderRadius: 5,
     fontSize: 20,
     padding: 10,
@@ -204,7 +214,7 @@ const styles = StyleSheet.create({
   orText: {
     fontSize: 15,
     fontWeight: 'bold',
-    color: 'grey',
+    color: '#0275dB',
     textTransform: 'capitalize',
   },
 });
