@@ -8,9 +8,18 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
+  Dimensions,
 } from 'react-native';
-function Records() {
+
+const bgimage = require('../src/assets/images/background.png');
+
+function Records({navigation}) {
   return (
+    <>
+    <Image
+        source={bgimage}
+        style={styles.backgroundImage}
+      />
     <ScrollView>
       <View style={styles.mainContainer}>
         <View
@@ -19,21 +28,22 @@ function Records() {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Text style={{fontSize: 24, fontWeight: 'bold', marginTop: 25}}>
+          <Text style={{fontSize: 24, fontWeight: 'bold', marginTop: 25, color: "#000"}}>
             My Records
           </Text>
         </View>
 
         <View style={{marginTop: 20}}>
+
           <Grid
             style={{
               borderWidth: 1,
               width: '90%',
-              borderRadius: 3,
+              borderColor: '#CCC',
               margin: 20,
-              backgroundColor: '#f8f9fa',
             }}>
-            <Col>
+
+            <Col style={{backgroundColor: "#F4F4F4"}}>
               <Row style={styles.alignSelfstyle}>
                 <Text style={styles.tableHeading}>Date</Text>
               </Row>
@@ -57,7 +67,7 @@ function Records() {
               </Row>
             </Col>
 
-            <Col>
+            <Col style={{backgroundColor: "#FFF"}}>
               <Row style={styles.alignSelfstyle}>
                 <Text style={styles.tableHeading}>Equipment</Text>
               </Row>
@@ -81,7 +91,7 @@ function Records() {
               </Row>
             </Col>
 
-            <Col>
+            <Col style={{backgroundColor: "#F4f4f4"}}>
               <Row style={styles.alignSelfstyle}>
                 <Text style={styles.tableHeading}>Location</Text>
               </Row>
@@ -105,7 +115,7 @@ function Records() {
               </Row>
             </Col>
 
-            <Col>
+            <Col style={{backgroundColor: "#FFF"}}>
               <Row style={styles.alignSelfstyle}>
                 <Text style={styles.tableHeading}>Description</Text>
               </Row>
@@ -132,38 +142,53 @@ function Records() {
         </View>
 
         <View style={{marginTop: 30}}>
-          <TouchableOpacity style={styles.saveButtoncontainer}>
+          <TouchableOpacity onPress={() => navigation.navigate('AdminPanel')} style={styles.saveButtoncontainer}>
             <Text style={styles.saveButtontext}>Back</Text>
           </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   alignSelfstyle: {
-    margin: 5,
+    paddingVertical: 6,
+    paddingHorizontal: 6,
     alignSelf: 'center',
   },
+
+  tableInnerstyle: {
+    paddingVertical: 6,
+    paddingHorizontal: 6,
+    alignSelf: 'center',
+  },
+
   mainContainer: {
     flex: 1,
   },
+
   tableText: {
     fontSize: 12,
     alignSelf: 'center',
   },
+
   tableHeading: {
     fontSize: 14,
     alignSelf: 'center',
+    color: '#000',
+    fontWeight: 'bold',
   },
+
   saveButtoncontainer: {
     marginTop: 50,
     width: '50%',
     backgroundColor: '#d9534f',
     alignSelf: 'center',
-    borderRadius: 60,
+    borderRadius: 4,
   },
+
   saveButtontext: {
     textAlign: 'center',
     paddingHorizontal: 20,
@@ -171,6 +196,14 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 20,
     fontWeight: 'bold',
+  },
+
+  backgroundImage: {
+    position: 'absolute',
+    zIndex: -1,
+    opacity: 0.1,
+    width: Dimensions.get('screen').width,
+    height: Dimensions.get('screen').height,
   },
 });
 

@@ -8,54 +8,54 @@ import {
   ScrollView,
   TextInput,
   ImageBackground,
-  Dimensions
+  Dimensions,
 } from 'react-native';
 
-const image = require('../src/assets/images/background.png');
+const bgImage = require('../src/assets/images/background.png');
 
 function Login({navigation}) {
   return (
-      <View>
-        <Image source={image} style={{ position: 'absolute', zIndex: -1, opacity: 0.1, width: Dimensions.get("screen").width,height: Dimensions.get("screen").height }} />
-          <View style={styles.logoContainer}>
-            <Image
-              style={styles.logo}
-              source={require('../src/assets/images/545.png')}
-            />
-          </View>
-
-          <View style={styles.loginHeadingContainer}>
-            <Text style={styles.loginHeading}> Login </Text>
-          </View>
-
-          <View style={styles.emailInputcontainer}>
-            <TextInput
-              keyboardType="email-address"
-              style={styles.emailInput}
-              placeholder="Email"
-            />
-          </View>
-
-          <View style={styles.passwordInputcontainer}>
-            <TextInput
-              secureTextEntry={true}
-              style={styles.passwordInput}
-              placeholder="Password"
-            />
-          </View>
-
-          <View style={styles.loginButtoncontainer}>
-            <TouchableOpacity
-              style={styles.loginButton}
-              onPress={() => navigation.navigate('AdminPanel')}>
-              <Text style={styles.loginButtontext}> Login </Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.orTextcontainer}>
-            <Text style={styles.orText}> English | Arabic </Text>
-          </View>
+    <View>
+      <Image source={bgImage} style={styles.backgroundImage} />
+      <View style={styles.logoContainer}>
+        <Image
+          style={styles.logo}
+          source={require('../src/assets/images/545.png')}
+        />
       </View>
+
+      <View style={styles.loginHeadingContainer}>
+        <Text style={styles.loginHeading}> Sign In </Text>
+      </View>
+
+      <View style={styles.emailInputcontainer}>
+        <TextInput
+          keyboardType="email-address"
+          style={styles.emailInput}
+          placeholder="Email"
+        />
+      </View>
+
+      <View style={styles.passwordInputcontainer}>
+        <TextInput
+          secureTextEntry={true}
+          style={styles.passwordInput}
+          placeholder="Password"
+        />
+      </View>
+
+      <View style={styles.loginButtoncontainer}>
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={() => navigation.navigate('AdminPanel')}>
+          <Text style={styles.loginButtontext}> Sign In </Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.orTextcontainer}>
+        <Text style={styles.orText}> English | Arabic </Text>
+      </View>
+    </View>
   );
 }
 
@@ -106,9 +106,9 @@ const styles = StyleSheet.create({
   emailInput: {
     width: '90%',
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: '#CCCC',
     backgroundColor: '#fff',
-    borderRadius: 5,
+    borderRadius: 3,
     fontSize: 20,
     padding: 10,
     paddingLeft: 15,
@@ -124,9 +124,9 @@ const styles = StyleSheet.create({
   passwordInput: {
     width: '90%',
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: '#ccc',
     backgroundColor: '#fff',
-    borderRadius: 5,
+    borderRadius: 3,
     fontSize: 20,
     padding: 10,
     paddingLeft: 15,
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
 
   loginButton: {
     width: '90%',
-    borderRadius: 5,
+    borderRadius: 3,
     alignItems: 'center',
     backgroundColor: 'black',
     marginTop: 15,
@@ -146,7 +146,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.3,
     shadowRadius: 1.41,
-
     elevation: 2,
   },
 
@@ -216,6 +215,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#0275dB',
     textTransform: 'capitalize',
+  },
+  backgroundImage: {
+    position: 'absolute',
+    zIndex: -1,
+    opacity: 0.1,
+    width: Dimensions.get('screen').width,
+    height: Dimensions.get('screen').height,
   },
 });
 

@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   
-  input: {
+  expiryinput: {
     height: 42,
     width: 130,
     borderRadius: 3,

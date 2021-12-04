@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {Col, Row, Grid} from 'react-native-easy-grid';
 import {
   Image,
   ScrollView,
@@ -7,234 +8,370 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
+  Dimensions,
 } from 'react-native';
-import {Col, Row, Grid} from 'react-native-easy-grid';
-function EquipmentinfoOne() {
-  return (
-    <ScrollView>
-      <View style={styles.mainContainer}>
-        <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-          <Image
-            source={{
-              uri: 'https://reactnative.dev/img/tiny_logo.png',
-            }}
-            style={styles.productImage}
-          />
 
-          <TouchableOpacity style={styles.certificateButtoncontainer}>
-            <Text style={styles.certificateButtontext}>View Certificate</Text>
+const bgimage = require('../src/assets/images/background.png');
+
+const productImage = require('../src/assets/images/fireproduct.jpg');
+
+function EquipmentinfoOne({navigation}) {
+  return (
+    <>
+      <Image source={bgimage} style={styles.backgroundImage} />
+      <ScrollView>
+        <View style={styles.productSection}>
+          <Image source={productImage} style={styles.productImage} />
+
+          <TouchableOpacity onPress={() => navigation.navigate("EquipmentinfoTwo")} style={styles.certificateButtoncontainer}>
+            <Text style={styles.certificateButtontext}> View Certificate </Text>
           </TouchableOpacity>
         </View>
 
         <View
           style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            marginTop: 30,
-          }}>
-          <Text
-            style={{
-              color: '#000',
-              fontSize: 12,
-              fontWeight: 'bold',
-              marginTop: 5,
-            }}>
-            {' '}
-            Description:{' '}
-          </Text>
-
-          <TextInput
-            keyboardType="default"
-            style={styles.descInput}
-            placeholder="Description"
-          />
-        </View>
-
-        <View style={{flexDirection: 'row', marginTop: 20}}>
-          <Text
-            style={{
-              color: '#000',
-              marginRight: 15,
-              marginLeft: 4,
-              fontSize: 12,
-              fontWeight: 'bold',
-              marginTop: 5,
-              textAlign: 'center',
-            }}>
-            {' '}
-            Location Description:{' '}
-          </Text>
-
-          <TextInput
-            keyboardType="default"
-            style={styles.descInput}
-            placeholder="Location Description"
-          />
-        </View>
-
-        <View style={{flexDirection: 'row', marginTop: 20}}>
-          <Text
-            style={{
-              color: '#000',
-              fontSize: 12,
-              fontWeight: 'bold',
-              marginTop: 5,
-              marginRight: 55,
-              marginLeft: 14,
-              textAlign: 'center',
-            }}>
-            {' '}
-            Equipment:{' '}
-          </Text>
-
-          <TextInput
-            keyboardType="default"
-            style={styles.descInput}
-            placeholder="Equipment"
-          />
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
+            alignSelf: 'center',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '96%',
             marginTop: 20,
+            paddingVertical: 5,
+            borderWidth: 1,
+            borderColor: '#CCCC',
+            borderRadius: 5,
           }}>
-          <Text
-            style={{
-              color: '#000',
-              fontSize: 12,
-              fontWeight: 'bold',
-              marginTop: 5,
-            }}>
-            {' '}
-            Equipment Type:{' '}
-          </Text>
+          <View style={styles.inputMaincontainer}>
+            <View style={styles.inputLabelcontainer}>
+              <Text style={styles.inputLabeltext}> Description: </Text>
+            </View>
 
-          <TextInput
-            keyboardType="default"
-            style={styles.descInput}
-            placeholder="Equipment Type"
-          />
+            <View>
+              <Text
+                style={{
+                  fontSize: 17,
+                  alignSelf: 'center',
+                  paddingHorizontal: 80,
+                }}>
+                {' '}
+                Fire Estinguisher{' '}
+              </Text>
+            </View>
+          </View>
+
+          <View style={styles.inputMaincontainer}>
+            <View style={styles.inputLabelcontainer}>
+              <Text style={styles.inputLabeltext}> Location Description: </Text>
+            </View>
+
+            <View>
+              <Text
+                style={{
+                  fontSize: 17,
+                  alignSelf: 'center',
+                  paddingHorizontal: 12,
+                }}>
+                {' '}
+                IT Room{' '}
+              </Text>
+            </View>
+          </View>
+
+          <View style={styles.inputMaincontainer}>
+            <View style={styles.inputLabelcontainer}>
+              <Text style={styles.inputLabeltext}> Equipment: </Text>
+            </View>
+
+            <View>
+              <Text
+                style={{
+                  fontSize: 17,
+                  alignSelf: 'center',
+                  paddingHorizontal: 85,
+                }}>
+                {' '}
+                Fire Equipment{' '}
+              </Text>
+            </View>
+          </View>
+
+          <View style={styles.inputMaincontainer}>
+            <View style={styles.inputLabelcontainer}>
+              <Text style={styles.inputLabeltext}> Equipment Type: </Text>
+            </View>
+
+            <View>
+              <Text
+                style={{
+                  fontSize: 17,
+                  alignSelf: 'center',
+                  paddingHorizontal: 45,
+                }}>
+                {' '}
+                Fire Safety{' '}
+              </Text>
+            </View>
+          </View>
+
+          <View style={styles.inputMaincontainer}>
+            <View style={styles.inputLabelcontainer}>
+              <Text style={styles.inputLabeltext}> Equipment Family: </Text>
+            </View>
+
+            <View>
+              <Text
+                style={{
+                  fontSize: 17,
+                  alignSelf: 'center',
+                  paddingHorizontal: 30,
+                }}>
+                {' '}
+                Fire Equipment{' '}
+              </Text>
+            </View>
+          </View>
+
+          <View style={styles.inputMaincontainer}>
+            <View style={styles.inputLabelcontainer}>
+              <Text style={styles.inputLabeltext}> Last Inspection Date: </Text>
+            </View>
+
+            <View>
+              <Text
+                style={{
+                  fontSize: 17,
+                  alignSelf: 'center',
+                  paddingHorizontal: 12,
+                }}>
+                {' '}
+                Not Available{' '}
+              </Text>
+            </View>
+          </View>
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            marginTop: 20,
-          }}>
-          <Text
-            style={{
-              color: '#000',
-              fontSize: 12,
-              fontWeight: 'bold',
-              marginTop: 5,
-            }}>
-            {' '}
-            Equipment Family:{' '}
-          </Text>
 
-          <TextInput
-            keyboardType="default"
-            style={styles.descInput}
-            placeholder="Equipment Family"
-          />
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            marginTop: 20,
-          }}>
-          <Text
-            style={{
-              color: '#000',
-              fontSize: 12,
-              fontWeight: 'bold',
-              marginTop: 5,
-            }}>
-            {' '}
-            Last Inspection Date:{' '}
-          </Text>
-
-          <TextInput
-            keyboardType="default"
-            style={styles.descInput}
-            placeholder="Last Inspection Date"
-          />
-        </View>
-
-        <View style={{marginTop: 20,}}>
+        <View style={{marginTop: 20}}>
           <Grid
-            style={{borderWidth: 1, width: '90%', borderRadius: 3, margin: 20, backgroundColor: "#f8f9fa"}}>
-            <Col>
+            style={{
+              borderWidth: 1,
+              borderColor: '#CCC',
+              width: '90%',
+              borderRadius: 3,
+              margin: 20,
+            }}>
+            <Col style={{backgroundColor: '#F4F4F4'}}>
               <Row style={styles.alignSelfstyle}>
-                <Text style={{fontSize: 18}}>Date</Text>
+                <Text style={styles.tableHeading}>Date</Text>
               </Row>
               <Row style={styles.alignSelfstyle}>
-                <Text>10/Dec/2021</Text>
+                <Text style={styles.tableText}>10/Dec/2021</Text>
               </Row>
               <Row style={styles.alignSelfstyle}>
-                <Text>10/Dec/2021</Text>
+                <Text style={styles.tableText}>10/Dec/2021</Text>
               </Row>
               <Row style={styles.alignSelfstyle}>
-                <Text>10/Dec/2021</Text>
+                <Text style={styles.tableText}>10/Dec/2021</Text>
               </Row>
             </Col>
 
-            <Col>
+            <Col style={{backgroundColor: '#fff'}}>
               <Row style={styles.alignSelfstyle}>
-                <Text>Users</Text>
+                <Text style={styles.tableHeading}>User</Text>
               </Row>
               <Row style={styles.alignSelfstyle}>
-                <Text>User1</Text>
+                <Text style={styles.tableText}>User 1</Text>
               </Row>
               <Row style={styles.alignSelfstyle}>
-                <Text>User2</Text>
+                <Text style={styles.tableText}>User 1</Text>
               </Row>
               <Row style={styles.alignSelfstyle}>
-                <Text>User3</Text>
+                <Text style={styles.tableText}>User 1</Text>
               </Row>
             </Col>
           </Grid>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
+  alignSelfstyle: {
+    paddingVertical: 6,
+    paddingHorizontal: 6,
+    alignSelf: 'center',
   },
+
+  tableText: {
+    fontSize: 15,
+    alignSelf: 'center',
+  },
+
+  tableHeading: {
+    fontSize: 14,
+    alignSelf: 'center',
+    color: '#000',
+    fontWeight: 'bold',
+  },
+
+  productSection: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginBottom: 15,
+  },
+
   productImage: {
-    width: 150,
+    width: '40%',
     height: 160,
     marginTop: 20,
+    borderWidth: 1,
+    borderColor: '#CCCC',
+    borderRadius: 5,
   },
+
   certificateButtoncontainer: {
+    width: '45%',
     backgroundColor: 'green',
     alignSelf: 'center',
     borderRadius: 6,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 2,
   },
+
   certificateButtontext: {
+    textAlign: 'center',
     paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingVertical: 15,
     color: '#fff',
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: 'bold',
   },
-  descInput: {
-    width: '60%',
+
+  inputMaincontainer: {
+    width: '100%',
+    flexDirection: 'row',
+    paddingVertical: 12,
+  },
+
+  inputLabelcontainer: {
+    marginLeft: 12,
+  },
+
+  inputLabeltext: {
+    color: '#000',
+    fontWeight: 'bold',
+    fontSize: 18,
+    fontFamily: 'Poppins-Bold',
+  },
+
+  checklistMaincontainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '96%',
+    marginLeft: 8,
+    marginTop: 20,
     borderWidth: 1,
-    borderColor: 'black',
-    borderRadius: 2,
-    fontSize: 15,
-    paddingVertical: 2,
+    borderColor: '#CCC',
+    borderRadius: 5,
+  },
+
+  checklistContainer: {
+    width: '92%',
+    marginBottom: 30,
+  },
+
+  headingContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+  },
+
+  headingText: {
+    fontSize: 30,
+    color: 'black',
+    fontWeight: 'bold',
+    fontFamily: 'Estonia-Regular',
+  },
+
+  radioButtoncontainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 20,
+  },
+
+  tagText: {
+    fontSize: 16,
+    color: 'black',
+    fontWeight: 'bold',
     alignSelf: 'center',
   },
-  alignSelfstyle: {
-    margin: 5,
-    alignSelf: 'center',
+
+  loginButton: {
+    width: '90%',
+    borderRadius: 5,
+    alignItems: 'center',
+    backgroundColor: '#5cb85c',
+    marginTop: 15,
+    padding: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 1.41,
+    elevation: 2,
+  },
+
+  attachImageButton: {
+    width: '90%',
+    borderRadius: 5,
+    alignItems: 'center',
+    backgroundColor: '#d9534f',
+    marginTop: 15,
+    padding: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 1.41,
+
+    elevation: 2,
+  },
+
+  loginButtontext: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 15,
+    textTransform: 'uppercase',
+  },
+
+  loginButtoncontainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  saveButtoncontainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 30,
+  },
+
+  backgroundImage: {
+    position: 'absolute',
+    zIndex: -1,
+    opacity: 0.1,
+    width: Dimensions.get('screen').width,
+    height: Dimensions.get('screen').height,
   },
 });
 

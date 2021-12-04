@@ -10,11 +10,13 @@ import Records from './components/Records';
 import Signup from './components/Signup';
 import ThirdScreen from './components/ThirdScreen';
 import Navigation from './navigation/Navigation';
+import QrCodeCamera from './components/QrCodeCamera';
+
 function App() {
   return (
     <>
       {/* <AdminPanel /> */}
-      <CertificateScreen />
+      {/* <CertificateScreen /> */}
       {/* <ThirdScreen /> */}
       {/* <FourthScreen /> */}
       {/* <EquipmentinfoOne /> */}
@@ -22,7 +24,8 @@ function App() {
       {/* <Records /> */}
       {/* <Login /> */}
       {/* <Signup /> */}
-      {/* <Navigation /> */}
+      <Navigation />
+      {/* <QrCodeCamera /> */}
       {/* <Account /> */}
     </>
   );

@@ -7,127 +7,133 @@ import {
   TextInput,
   Image,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
+
+const bgImage = require('../src/assets/images/background.png');
 
 function Account({navigation}) {
   return (
-    <ScrollView>
-      <View style={styles.mainContainer}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>User Account</Text>
-        </View>
-
-        <View style={styles.userImagecontainer}>
-          <Image
-            style={{width: 130, height: 120}}
-            source={require('../src/assets/images/userimage.png')}
-          />
-        </View>
-
+    <>
+      <Image source={bgImage} style={styles.backgroundImage} />
+      <ScrollView>
         <View>
-          <View style={styles.inputMaincontainer}>
-            <View style={styles.inputLabelcontainer}>
-              <Text style={styles.inputLabeltext}> Name: </Text>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>User Account</Text>
+          </View>
+
+          <View style={styles.userImagecontainer}>
+            <Image
+              style={styles.userImage}
+              source={require('../src/assets/images/userimage.png')}
+            />
+          </View>
+
+          <View>
+            <View style={styles.inputMaincontainer}>
+              <View style={styles.inputLabelcontainer}>
+                <Text style={styles.inputLabeltext}> Name: </Text>
+              </View>
+
+              <View style={styles.inputContainer}>
+                <TextInput
+                  keyboardType="default"
+                  style={styles.inputStyles}
+                  placeholder="Name"
+                />
+              </View>
             </View>
 
-            <View style={styles.inputContainer}>
-              <TextInput
-                keyboardType="default"
-                style={styles.inputStyles}
-                placeholder="Description"
-              />
+            <View style={styles.inputMaincontainer}>
+              <View style={styles.inputLabelcontainer}>
+                <Text style={styles.inputLabeltext}> Company: </Text>
+              </View>
+
+              <View style={styles.inputContainer}>
+                <TextInput
+                  keyboardType="default"
+                  style={styles.inputStyles}
+                  placeholder="Company"
+                />
+              </View>
+            </View>
+
+            <View style={styles.inputMaincontainer}>
+              <View style={styles.inputLabelcontainer}>
+                <Text style={styles.inputLabeltext}> Site: </Text>
+              </View>
+
+              <View style={styles.inputContainer}>
+                <TextInput
+                  keyboardType="default"
+                  style={styles.inputStyles}
+                  placeholder="Site"
+                />
+              </View>
+            </View>
+
+            <View style={styles.inputMaincontainer}>
+              <View style={styles.inputLabelcontainer}>
+                <Text style={styles.inputLabeltext}> User Name: </Text>
+              </View>
+
+              <View style={styles.inputContainer}>
+                <TextInput
+                  keyboardType="default"
+                  style={styles.inputStyles}
+                  placeholder="User Name"
+                />
+              </View>
+            </View>
+
+            <View style={styles.inputMaincontainer}>
+              <View style={styles.inputLabelcontainer}>
+                <Text style={styles.inputLabeltext}> Password: </Text>
+              </View>
+
+              <View style={styles.inputContainer}>
+                <TextInput
+                  keyboardType="default"
+                  secureTextEntry={true}
+                  style={styles.inputStyles}
+                  placeholder="Password"
+                />
+              </View>
+            </View>
+
+            <View style={styles.inputMaincontainer}>
+              <View style={styles.inputLabelcontainer}>
+                <Text style={styles.inputLabeltext}> Email: </Text>
+              </View>
+
+              <View style={styles.inputContainer}>
+                <TextInput
+                  keyboardType="email-address"
+                  style={styles.inputStyles}
+                  placeholder="Email"
+                />
+              </View>
             </View>
           </View>
 
-          <View style={styles.inputMaincontainer}>
-            <View style={styles.inputLabelcontainer}>
-              <Text style={styles.inputLabeltext}> Company: </Text>
-            </View>
-
-            <View style={styles.inputContainer}>
-              <TextInput
-                keyboardType="default"
-                style={styles.inputStyles}
-                placeholder="Location Description"
-              />
-            </View>
-          </View>
-
-          <View style={styles.inputMaincontainer}>
-            <View style={styles.inputLabelcontainer}>
-              <Text style={styles.inputLabeltext}> Site: </Text>
-            </View>
-
-            <View style={styles.inputContainer}>
-              <TextInput
-                keyboardType="default"
-                style={styles.inputStyles}
-                placeholder="Equipment"
-              />
-            </View>
-          </View>
-
-          <View style={styles.inputMaincontainer}>
-            <View style={styles.inputLabelcontainer}>
-              <Text style={styles.inputLabeltext}> UserName: </Text>
-            </View>
-
-            <View style={styles.inputContainer}>
-              <TextInput
-                keyboardType="default"
-                style={styles.inputStyles}
-                placeholder="Equipment Type"
-              />
-            </View>
-          </View>
-
-          <View style={styles.inputMaincontainer}>
-            <View style={styles.inputLabelcontainer}>
-              <Text style={styles.inputLabeltext}> Password: </Text>
-            </View>
-
-            <View style={styles.inputContainer}>
-              <TextInput
-                keyboardType="default"
-                secureTextEntry={true}
-                style={styles.inputStyles}
-                placeholder="Password"
-              />
-            </View>
-          </View>
-
-          <View style={styles.inputMaincontainer}>
-            <View style={styles.inputLabelcontainer}>
-              <Text style={styles.inputLabeltext}> Email: </Text>
-            </View>
-
-            <View style={styles.inputContainer}>
-              <TextInput
-                keyboardType="email-address"
-                style={styles.inputStyles}
-                placeholder="Email"
-              />
-            </View>
+          <View style={styles.loginButtoncontainer}>
+            <TouchableOpacity
+              style={styles.loginButton}
+              onPress={() => navigation.navigate('AdminPanel')}>
+              <Text style={styles.loginButtontext}> Save </Text>
+            </TouchableOpacity>
           </View>
         </View>
-
-        <View style={styles.loginButtoncontainer}>
-          <TouchableOpacity
-            style={styles.loginButton}
-            onPress={() => navigation.navigate('AdminPanel')}>
-            <Text style={styles.loginButtontext}> Save </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    backgroundColor: '#fff',
-    flex: 1,
-  },
+  // mainContainer: {
+  //   backgroundColor: '#fff',
+  //   flex: 1,
+  // },
 
   inputMaincontainer: {
     width: '100%',
@@ -155,9 +161,9 @@ const styles = StyleSheet.create({
     height: 35,
     padding: 9,
     fontSize: 13,
-    borderColor: 'gray',
+    borderColor: '#CCC',
     borderWidth: 1,
-    borderRadius: 4,
+    borderRadius: 3,
   },
   titleContainer: {
     width: '100%',
@@ -168,7 +174,8 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 30,
+    fontSize: 25,
+    color: '#000',
     fontWeight: 'bold',
     textTransform: 'uppercase',
   },
@@ -179,9 +186,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
+  userImage: {
+    width: 130,
+    height: 120,
+  },
+
   loginButton: {
     width: '90%',
-    borderRadius: 5,
+    borderRadius: 3,
     alignItems: 'center',
     backgroundColor: '#5cb85c',
     padding: 15,
@@ -208,6 +220,14 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  backgroundImage: {
+    position: 'absolute',
+    zIndex: -1,
+    opacity: 0.1,
+    width: Dimensions.get('screen').width,
+    height: Dimensions.get('screen').height,
   },
 });
 
