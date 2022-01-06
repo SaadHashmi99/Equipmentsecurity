@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import {
   View,
   Text,
@@ -9,11 +10,48 @@ import {
   TextInput,
   ImageBackground,
   Dimensions,
+  Alert,
 } from 'react-native';
+import {useDispatch} from 'react-redux';
 
 const bgImage = require('../src/assets/images/background.png');
 
+const baseUrl = 'http://system.inspectosafe.com/api/login.php';
+
 function Login({navigation}) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const fetchLogin = () => {
+    axios
+      .post(baseUrl, {
+        email: email,
+        password: password,
+      })
+      .then(response => {
+        let message = response.data.message;
+        let loginFailed = 'Invalid Email or Password';
+
+        if (message === 'login successfull') {
+          Alert.alert('Login Successfull');
+          navigation.navigate('AdminPanel');
+        } else {
+          Alert.alert(loginFailed);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  const handleLogin = () => {
+    if (email === '' || password === '') {
+      alert('Please fill all the fields');
+    } else {
+      fetchLogin();
+    }
+  };
+
   return (
     <View>
       <Image source={bgImage} style={styles.backgroundImage} />
@@ -30,30 +68,55 @@ function Login({navigation}) {
 
       <View style={styles.emailInputcontainer}>
         <TextInput
+          onChangeText={value => setEmail(value)}
+          value={email}
           keyboardType="email-address"
           style={styles.emailInput}
           placeholder="Email"
+          placeholderTextColor="#ccc"
         />
       </View>
 
       <View style={styles.passwordInputcontainer}>
         <TextInput
+          onChangeText={value => setPassword(value)}
+          value={password}
           secureTextEntry={true}
           style={styles.passwordInput}
           placeholder="Password"
+          placeholderTextColor="#ccc"
         />
       </View>
 
       <View style={styles.loginButtoncontainer}>
-        <TouchableOpacity
-          style={styles.loginButton}
-          onPress={() => navigation.navigate('AdminPanel')}>
+        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
           <Text style={styles.loginButtontext}> Sign In </Text>
         </TouchableOpacity>
       </View>
 
-      <View style={styles.orTextcontainer}>
-        <Text style={styles.orText}> English | Arabic </Text>
+      <View
+        style={{
+          marginTop: 50,
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          alignSelf: 'center',
+        }}>
+        <View>
+          <TouchableOpacity>
+            <Text style={styles.orText}> English </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View>
+          <Text style={{fontSize: 30, padding: 6}}> | </Text>
+        </View>
+
+        <View>
+          <TouchableOpacity>
+            <Text style={styles.orText}> Arabic </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -109,7 +172,7 @@ const styles = StyleSheet.create({
     borderColor: '#CCCC',
     backgroundColor: '#fff',
     borderRadius: 3,
-    fontSize: 20,
+    fontSize: 18,
     padding: 10,
     paddingLeft: 15,
   },
@@ -127,7 +190,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     backgroundColor: '#fff',
     borderRadius: 3,
-    fontSize: 20,
+    fontSize: 18,
     padding: 10,
     paddingLeft: 15,
   },
@@ -206,12 +269,10 @@ const styles = StyleSheet.create({
 
   orTextcontainer: {
     marginTop: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 
   orText: {
-    fontSize: 15,
+    fontSize: 17,
     fontWeight: 'bold',
     color: '#0275dB',
     textTransform: 'capitalize',
@@ -219,7 +280,7 @@ const styles = StyleSheet.create({
   backgroundImage: {
     position: 'absolute',
     zIndex: -1,
-    opacity: 0.1,
+    opacity: 0.5,
     width: Dimensions.get('screen').width,
     height: Dimensions.get('screen').height,
   },

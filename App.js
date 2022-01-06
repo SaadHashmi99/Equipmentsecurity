@@ -1,34 +1,75 @@
 import React from 'react';
-import Account from './components/Account';
-import AdminPanel from './components/AdminPanel';
-import CertificateScreen from './components/CertificateScreen';
-import EquipmentinfoOne from './components/EquipmentinfoOne';
-import EquipmentinfoTwo from './components/EquipmentinfoTwo';
-import FourthScreen from './components/FourthScreen';
-import Login from './components/Login';
-import Records from './components/Records';
-import Signup from './components/Signup';
-import ThirdScreen from './components/ThirdScreen';
+import { Image, Dimensions } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Navigation from './navigation/Navigation';
-import QrCodeCamera from './components/QrCodeCamera';
 
-function App() {
-  return (
-    <>
-      {/* <AdminPanel /> */}
-      {/* <CertificateScreen /> */}
-      {/* <ThirdScreen /> */}
-      {/* <FourthScreen /> */}
-      {/* <EquipmentinfoOne /> */}
-      {/* <EquipmentinfoTwo /> */}
-      {/* <Records /> */}
-      {/* <Login /> */}
-      {/* <Signup /> */}
-      <Navigation />
-      {/* <QrCodeCamera /> */}
-      {/* <Account /> */}
-    </>
-  );
+
+const splashScreen = require('./src/assets/images/splash.png');
+
+export default function App() {
+
+  const initialLoginState = {
+    isLoading: true,
+    userName: null,
+    userToken: null,
+  };
+
+  const loginReducer = (prevState, action) => {
+    switch (action.type) {
+      case 'RETRIEVE_TOKEN':
+        return {
+          ...prevState,
+          userToken: action.token,
+          isLoading: false,
+        };
+      case 'LOGIN':
+        return {
+          ...prevState,
+          userName: action.id,
+          userToken: action.token,
+          isLoading: false,
+        };
+      case 'LOGOUT':
+        return {
+          ...prevState,
+          userName: null,
+          userToken: null,
+          isLoading: false,
+        };
+      case 'REGISTER':
+        return {
+          ...prevState,
+          userName: action.id,
+          userToken: action.token,
+          isLoading: false,
+        };
+    }
+  };
+
+  const [loginState, dispatch] = React.useReducer(loginReducer, initialLoginState)
+
+  React.useEffect(() => {
+    setTimeout(async () => {
+      let userToken;
+      userToken = null;
+      try{
+        userToken = await AsyncStorage.getItem('userToken')
+      } catch (e) {
+        console.log(e);
+      }
+      dispatch({ type: 'RETRIEVE_TOKEN', token: userToken });
+    }, 3000);
+  }, []);
+
+  if(loginState.isLoading){
+    return(
+      <Image source={splashScreen} style={{width:Dimensions.get('screen').width, height:Dimensions.get('screen').height}}/>
+    );
+  }
+
+  return(
+
+    <Navigation />
+
+  )
 }
-
-export default App;

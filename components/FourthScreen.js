@@ -9,9 +9,10 @@ import {
   Platform,
   ScrollView,
 } from 'react-native';
+
 // import DateTimePicker from '@react-native-community/datetimepicker';
 
-function FourthScreen() {
+const FourthScreen = () => {
   return (
     <ScrollView>
       <View style={styles.marginTopcontainer}>
@@ -57,7 +58,7 @@ function FourthScreen() {
       </View>
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   flexContainer: {

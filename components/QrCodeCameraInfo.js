@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {View, Dimensions, Text, Alert} from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import * as Animatable from 'react-native-animatable';
@@ -7,7 +6,7 @@ import * as Animatable from 'react-native-animatable';
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
-function QrCodeCamera({navigation}) {
+const QrCodeCameraInfo = ({navigation}) => {
   const onSuccess = e => {
 
     const data = e.data;
@@ -15,7 +14,7 @@ function QrCodeCamera({navigation}) {
     if (data) {
       Alert.alert(data);
       console.log(data)
-      navigation.navigate('CertificateScreen', {
+      navigation.navigate('EquipmentinfoOne', {
         qrCode: data,
       });
     } else {
@@ -69,7 +68,7 @@ function QrCodeCamera({navigation}) {
       }
     />
   );
-}
+};
 
 const overlayColor = 'rgba(0,0,0,0.5)'; // this gives us a black color with a 50% transparency
 
@@ -132,4 +131,4 @@ const styles = {
   },
 };
 
-export default QrCodeCamera;
+export default QrCodeCameraInfo;

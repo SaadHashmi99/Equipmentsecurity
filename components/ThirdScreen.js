@@ -28,7 +28,7 @@ const radioButtonsData = [
   },
 ];
 
-function ThirdScreen() {
+const ThirdScreen = () => {
   const [radioButtons, setRadioButtons] = useState(radioButtonsData);
   return (
     <ScrollView>
@@ -79,7 +79,7 @@ function ThirdScreen() {
       </View>
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   mainContainer: {

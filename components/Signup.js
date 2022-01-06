@@ -9,7 +9,7 @@ import {
   TextInput,
 } from 'react-native';
 
-function Signup() {
+const Signup = () => {
   return (
     <ScrollView>
       <View style={styles.myContainer}>
@@ -71,7 +71,7 @@ function Signup() {
       </View>
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   myContainer: {

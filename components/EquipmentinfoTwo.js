@@ -38,7 +38,7 @@ const radioButtonsData = [
   },
 ];
 
-function EquipmentinfoTwo({navigation}) {
+const EquipmentinfoTwo = ({navigation}) => {
   const [radioButtons, setRadioButtons] = useState(radioButtonsData);
   function onPressRadioButton(radioButtonsArray) {
     setRadioButtons(radioButtonsArray);
@@ -111,7 +111,7 @@ function EquipmentinfoTwo({navigation}) {
       </ScrollView>
     </>
   );
-}
+};
 
 const styles = StyleSheet.create({
   inputMaincontainer: {
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 
-  productImage: {
+  productImage2: {
     width: '45%',
     height: 200,
     marginTop: 20,
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
   backgroundImage: {
     position: 'absolute',
     zIndex: -1,
-    opacity: 0.1,
+    opacity: 0.5,
     width: Dimensions.get('screen').width,
     height: Dimensions.get('screen').height,
   },

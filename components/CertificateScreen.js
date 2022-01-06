@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import RadioGroup from 'react-native-radio-buttons-group';
 import {
   Image,
@@ -11,6 +11,8 @@ import {
   Dimensions,
   Modal,
 } from 'react-native';
+
+import ImagePicker from 'react-native-image-crop-picker';
 
 const radioButtonsData1 = [
   {
@@ -106,9 +108,18 @@ const radioButtonsData4 = [
 
 const bgimage = require('../src/assets/images/background.png');
 
-const productImage = require('../src/assets/images/fireproduct.jpg');
+const productImage = require('../src/assets/images/fireproduct.png');
 
-function CertificateScreen({navigation}) {
+function CertificateScreen({navigation, route}) {
+  const {qrCode, otherParam} = route.params;
+
+  const [galleyImage, setGalleyImage] = useState(
+    'https://cdn1.iconfinder.com/data/icons/image-manipulations/100/13-512.png',
+  );
+
+  const [attachImage, setAttachImage] = useState(
+    'https://icon-library.com/images/img-icon/img-icon-0.jpg',
+  );
 
   const [radioButtons1, setRadioButtons1] = useState(radioButtonsData1);
 
@@ -118,23 +129,42 @@ function CertificateScreen({navigation}) {
 
   const [radioButtons4, setRadioButtons4] = useState(radioButtonsData4);
 
-  function onPressRadioButton1(radioButtonsArray) {
-    setRadioButtons1(radioButtonsArray);
+  function onPressRadioButton1(radioButtonsArray1) {
+    setRadioButtons1(radioButtonsArray1);
   }
 
-  function onPressRadioButton2(radioButtonsArray) {
-    setRadioButtons2(radioButtonsArray);
+  function onPressRadioButton2(radioButtonsArray2) {
+    setRadioButtons2(radioButtonsArray2);
   }
 
-  function onPressRadioButton3(radioButtonsArray) {
-    setRadioButtons3(radioButtonsArray);
+  function onPressRadioButton3(radioButtonsArray3) {
+    setRadioButtons3(radioButtonsArray3);
   }
 
-  function onPressRadioButton4(radioButtonsArray) {
-    setRadioButtons4(radioButtonsArray);
+  function onPressRadioButton4(radioButtonsArray4) {
+    setRadioButtons4(radioButtonsArray4);
   }
 
   const [modalVisible, setModalVisible] = useState(false);
+
+  const openGallery = () => {
+    ImagePicker.openPicker({
+      cropping: false,
+    }).then(image => {
+      console.log(image);
+      setGalleyImage(image.path);
+      setModalVisible(true);
+    });
+  };
+
+  const openCamera = () => {
+    ImagePicker.openCamera({
+      cropping: true,
+    }).then(image => {
+      console.log(image);
+      setAttachImage(image.path);
+    });
+  };
 
   return (
     <>
@@ -156,12 +186,31 @@ function CertificateScreen({navigation}) {
             justifyContent: 'center',
             alignItems: 'center',
             width: '96%',
-            marginTop: 20,
+            marginTop: 10,
             paddingVertical: 5,
             borderWidth: 1,
             borderColor: '#CCCC',
             borderRadius: 5,
           }}>
+
+          <View style={styles.inputMaincontainer}>
+            <View style={styles.inputLabelcontainer}>
+              <Text style={styles.inputLabeltext}> QR-Code Data: </Text>
+            </View>
+
+            <View>
+              <Text
+                style={{
+                  fontSize: 17,
+                  color: '#000000',
+                  alignSelf: 'center',
+                  paddingHorizontal: 60,
+                }}>
+                {qrCode}
+              </Text>
+            </View>
+          </View>
+
           <View style={styles.inputMaincontainer}>
             <View style={styles.inputLabelcontainer}>
               <Text style={styles.inputLabeltext}> Description: </Text>
@@ -282,46 +331,76 @@ function CertificateScreen({navigation}) {
             <View style={styles.headingContainer}>
               <Text style={styles.headingText}> Checklist </Text>
             </View>
-
-            {/* <SafeAreaView>
-              <FlatList
-                data={radioButtonsData}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-              />
-            </SafeAreaView> */}
             <View style={styles.radioButtoncontainer}>
               <Text style={styles.tagText}>Tag 1</Text>
-              <RadioGroup radioButtons={radioButtons1} onPress={onPressRadioButton1} layout="row" />
+              <RadioGroup
+                radioButtons={radioButtons1}
+                onPress={onPressRadioButton1}
+                layout="row"
+              />
             </View>
 
             <View style={styles.radioButtoncontainer}>
               <Text style={styles.tagText}>Tag 2</Text>
-              <RadioGroup radioButtons={radioButtons2} onPress={onPressRadioButton2} layout="row" />
+              <RadioGroup
+                radioButtons={radioButtons2}
+                onPress={onPressRadioButton2}
+                layout="row"
+              />
             </View>
 
             <View style={styles.radioButtoncontainer}>
               <Text style={styles.tagText}>Tag 3</Text>
 
-              <RadioGroup radioButtons={radioButtons3} onPress={onPressRadioButton3} layout="row" />
+              <RadioGroup
+                radioButtons={radioButtons3}
+                onPress={onPressRadioButton3}
+                layout="row"
+              />
             </View>
 
             <View style={styles.radioButtoncontainer}>
               <Text style={styles.tagText}>Tag 4</Text>
 
-              <RadioGroup radioButtons={radioButtons4} onPress={onPressRadioButton4} layout="row" />
+              <RadioGroup
+                radioButtons={radioButtons4}
+                onPress={onPressRadioButton4}
+                layout="row"
+              />
             </View>
           </View>
         </View>
 
         <View style={styles.loginButtoncontainer}>
-          <TouchableOpacity style={styles.attachImageButton}>
+          <TouchableOpacity
+            style={styles.attachImageButton}
+            onPress={openCamera}>
             <Text style={styles.loginButtontext}> Attach Image </Text>
           </TouchableOpacity>
         </View>
 
+        <View
+          style={{
+            width: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Image
+            source={{uri: attachImage}}
+            style={{
+              marginTop: 20,
+              height: 250,
+              width: '80%',
+              borderColor: '#CCCC',
+              borderWidth: 1,
+            }}
+          />
+        </View>
+
         <View style={styles.saveButtoncontainer}>
-          <TouchableOpacity style={styles.loginButton}>
+          <TouchableOpacity
+            style={styles.loginButton}
+            onPress={() => navigation.navigate('AdminPanel')}>
             <Text style={styles.loginButtontext}> Save </Text>
           </TouchableOpacity>
         </View>
@@ -336,36 +415,64 @@ function CertificateScreen({navigation}) {
             }}>
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
-                <TouchableOpacity style={styles.addPicture}>
+                <TouchableOpacity
+                  style={styles.addPicture}
+                  onPress={openGallery}>
                   <Text style={styles.textStyle}>Add Picture</Text>
                 </TouchableOpacity>
 
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    alignSelf: 'center',
-                  }}>
-                  <Text style={{fontSize: 18, color: '#000'}}>
-                    {' '}
-                    Issue Date:{' '}
-                  </Text>
-
-                  <TextInput
-                    style={styles.expiryinput}
-                    placeholder="DD/MM/YYYY"
-                    keyboardType="default"
+                <View>
+                  <Image
+                    source={{uri: galleyImage}}
+                    style={{
+                      margin: 25,
+                      height: 100,
+                      width: 100,
+                      borderWidth: 2,
+                      borderColor: '#000',
+                      borderRadius: 100,
+                    }}
                   />
                 </View>
 
                 <View>
-                  <Text> Issue Date </Text>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      alignSelf: 'center',
+                    }}>
+                    <Text style={{fontSize: 16, color: '#000'}}>
+                      {' '}
+                      Issue Date:{' '}
+                    </Text>
 
-                  <TextInput
-                    style={styles.issueInput}
-                    placeholder="DD/MM/YYYY"
-                    keyboardType="default"
-                  />
+                    <TextInput
+                      style={styles.expiryinput}
+                      placeholder="DD/MM/YYYY"
+                      keyboardType="default"
+                    />
+                  </View>
+
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      alignSelf: 'center',
+                    }}>
+                    <Text style={{fontSize: 16, color: '#000'}}>
+                      {' '}
+                      Expiry Date:{' '}
+                    </Text>
+
+                    <TextInput
+                      style={styles.expiryinput}
+                      placeholder="DD/MM/YYYY"
+                      keyboardType="default"
+                    />
+                  </View>
                 </View>
 
                 <TouchableOpacity
@@ -436,7 +543,6 @@ const styles = StyleSheet.create({
     color: '#000',
     fontWeight: 'bold',
     fontSize: 18,
-    fontFamily: 'Poppins-Bold',
   },
 
   checklistMaincontainer: {
@@ -514,7 +620,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.3,
     shadowRadius: 1.41,
-
     elevation: 2,
   },
 
@@ -539,7 +644,7 @@ const styles = StyleSheet.create({
   backgroundImage: {
     position: 'absolute',
     zIndex: -1,
-    opacity: 0.1,
+    opacity: 0.5,
     width: Dimensions.get('screen').width,
     height: Dimensions.get('screen').height,
   },
@@ -548,14 +653,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 22,
   },
 
   modalView: {
     width: '80%',
-    height: '70%',
+    height: 'auto',
     margin: 20,
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
     borderRadius: 3,
     padding: 35,
     alignItems: 'center',
@@ -565,8 +669,8 @@ const styles = StyleSheet.create({
       height: 2,
     },
     shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+    shadowRadius: 4.65,
+    elevation: 25,
   },
 
   button: {
@@ -592,31 +696,17 @@ const styles = StyleSheet.create({
   },
 
   textStyle: {
-    color: 'white',
+    color: '#fff',
+    fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
   },
 
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-
   expiryinput: {
-    height: 42,
-    width: 130,
+    height: 45,
+    width: 110,
     borderRadius: 3,
-    margin: 15,
-    borderWidth: 1,
-    padding: 10,
-    fontSize: 14,
-    alignSelf: 'center',
-  },
-
-  issueInput: {
-    height: 42,
-    width: 130,
-    borderRadius: 3,
+    borderColor: '#CCC',
     margin: 15,
     borderWidth: 1,
     padding: 10,

@@ -13,7 +13,7 @@ import {
 
 const bgimage = require('../src/assets/images/background.png');
 
-function Records({navigation}) {
+const Records = ({navigation}) => {
   return (
     <>
     <Image
@@ -150,7 +150,7 @@ function Records({navigation}) {
     </ScrollView>
     </>
   );
-}
+};
 
 const styles = StyleSheet.create({
   alignSelfstyle: {
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
   backgroundImage: {
     position: 'absolute',
     zIndex: -1,
-    opacity: 0.1,
+    opacity: 0.5,
     width: Dimensions.get('screen').width,
     height: Dimensions.get('screen').height,
   },

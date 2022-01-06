@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {
   TouchableOpacity,
-  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -58,7 +57,7 @@ function AdminPanel({navigation}) {
         <View style={styles.buttoncontainer}>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => navigation.navigate('EquipmentinfoOne')}>
+            onPress={() => navigation.navigate('QrCodeCameraInfo')}>
             <Text style={styles.buttonText}> Equipment Info </Text>
           </TouchableOpacity>
         </View>
@@ -84,9 +83,7 @@ function AdminPanel({navigation}) {
 }
 
 const styles = StyleSheet.create({
-  // mainContainer: {
-  //   flex: 1,
-  // },
+  
   adminHeading: {
     color: '#000',
     fontSize: 30,
@@ -154,7 +151,7 @@ const styles = StyleSheet.create({
   backgroundImage: {
     position: 'absolute',
     zIndex: -1,
-    opacity: 0.1,
+    opacity: 0.5,
     width: Dimensions.get('screen').width,
     height: Dimensions.get('screen').height,
   },

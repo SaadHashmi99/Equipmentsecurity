@@ -11,11 +11,14 @@ import Records from '../components/Records';
 import ThirdScreen from '../components/ThirdScreen';
 import Account from '../components/Account';
 import QrCodeCamera from '../components/QrCodeCamera';
+import QrCodeCameraInfo from '../components/QrCodeCameraInfo';
 
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
+  
   return (
+
     <NavigationContainer>
     
       <Stack.Navigator initialRouteName="Login">
@@ -39,10 +42,13 @@ export default function Navigation() {
         <Stack.Screen name="Account" component={Account} options={{headerShown: false}} />
 
         <Stack.Screen name="QrCodeCamera" component={QrCodeCamera} options={{headerShown: false}} />
+
+        <Stack.Screen name="QrCodeCameraInfo" component={QrCodeCameraInfo} options={{headerShown: false}} />
       
       </Stack.Navigator>
     
     </NavigationContainer>
+
   );
 }
 
